@@ -15,7 +15,7 @@ import octoprint.plugin
 class OctobuddyPlugin(octoprint.plugin.SettingsPlugin,
                       octoprint.plugin.AssetPlugin,
                       octoprint.plugin.TemplatePlugin):
-
+##~test
 	##~~ SettingsPlugin mixin
 
 	def get_settings_defaults(self):
