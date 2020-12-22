@@ -3,6 +3,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import octoprint.plugin
+import RPi.GPIO as GPIO
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin):
         def on_after_startup(self):
