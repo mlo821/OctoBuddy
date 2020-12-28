@@ -10,9 +10,10 @@ def button_callback(channel):
     self._logger.info("Button Was Pushed!!!!")
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin):
-        def on_after_startup(self):
-                self._logger.info("OctoBuddy Alive Now!")
-		        GPIO.cleanup();
+	def on_after_startup(self):
+		GPIO.cleanup();
+		self._logger.info("OctoBuddy Alive Now!")
+
 
 
 GPIO.setwarnings(False)
