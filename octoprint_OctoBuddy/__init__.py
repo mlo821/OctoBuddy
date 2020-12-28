@@ -9,9 +9,7 @@ def button_callback(channel):
     print("Button was pushed!")
     self._logger.info("Button Was Pushed!!!!")
 
-class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
-                      octoprint.plugin.ShutdownPlugin):
-
+class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownPlugin):
     def on_after_startup(self):
 	    self._logger.info("OctoBuddy Alive Now!")
 
