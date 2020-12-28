@@ -7,9 +7,7 @@ import RPi.GPIO as GPIO
 
 buttonpressed = False
 
-def button_callback(channel):
-    print("Button was pushed!")
-    buttonpressed = True
+
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownPlugin):
     def on_after_startup(self):
@@ -20,6 +18,9 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         GPIO.cleanup();
         self._logger.info("OctoBuddy Going to Bed Now!")
         self._logger.info(buttonpressed)
+
+    def button_callback(channel):
+        self._logger.info("Button Pressed")
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
