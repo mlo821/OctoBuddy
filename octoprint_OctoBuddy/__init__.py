@@ -13,8 +13,9 @@ def button_callback(channel):
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownPlugin):
     def on_after_startup(self):
-	    self._logger.info("OctoBuddy Alive Now!")
+        self._logger.info("OctoBuddy Alive Now!")
         self._logger.info(buttonpressed)
+
     def on_shutdown(self):
         GPIO.cleanup();
         self._logger.info("OctoBuddy Going to Bed Now!")
