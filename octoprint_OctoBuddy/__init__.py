@@ -11,13 +11,15 @@ def button_callback(channel):
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin):
         def on_after_startup(self):
-            self._logger.info("OctoBuddy Alive Now!")
+                self._logger.info("OctoBuddy Alive Now!")
+		        GPIO.cleanup();
 
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(8, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.add_event_detect(8, GPIO.RISING, callback=button_callback)
+GPIO.add_event_detect(8, GPIO.RISING, callback=button_callback, bouncetime = 200)
+
 
 
 __plugin_pythoncompat__ = ">=2.7,<4"
