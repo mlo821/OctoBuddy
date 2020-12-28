@@ -9,17 +9,17 @@ buttonpressed = False
 
 def button_callback(channel):
     print("Button was pushed!")
-	buttonpressed = True;
+    buttonpressed = True;
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownPlugin):
     def on_after_startup(self):
 	    self._logger.info("OctoBuddy Alive Now!")
-		self._logger.info(buttonpressed)
+        self._logger.info(buttonpressed)
 
     def on_shutdown(self):
         GPIO.cleanup();
         self._logger.info("OctoBuddy Going to Bed Now!")
-		self._logger.info(buttonpressed)
+        self._logger.info(buttonpressed)
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
