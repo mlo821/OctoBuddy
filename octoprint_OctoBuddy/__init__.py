@@ -7,7 +7,6 @@ import RPi.GPIO as GPIO
 
 def button_callback(channel):
     print("Button was pushed!")
-    self._logger.info("Button Was Pushed!!!!")
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownPlugin):
     def on_after_startup(self):
@@ -21,7 +20,6 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(11, GPIO.RISING, callback=button_callback, bouncetime = 200)
-self._logger.info("Does This Work?")
 
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = OctoBuddyPlugin()
