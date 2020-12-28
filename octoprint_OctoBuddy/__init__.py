@@ -16,8 +16,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin):
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.add_event_detect(17, GPIO.RISING, callback=button_callback, bouncetime = 200)
+GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.add_event_detect(11, GPIO.RISING, callback=button_callback, bouncetime = 200)
 
 
 
