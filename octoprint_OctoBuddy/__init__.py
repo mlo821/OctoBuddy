@@ -14,8 +14,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
 	    self._logger.info("OctoBuddy Alive Now!")
 
     def on_shutdown(self):
-         GPIO.cleanup();
-		 self._logger.info("OctoBuddy Going to Bed Now!")
+        GPIO.cleanup();
+        self._logger.info("OctoBuddy Going to Bed Now!")
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
