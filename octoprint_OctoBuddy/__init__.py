@@ -3,7 +3,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import octoprint.plugin
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 def button_callback(channel):
     print("Button was pushed!")
