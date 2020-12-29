@@ -44,7 +44,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
     def button_callback(self, channel):
         self._logger.info("Button Pressed")
 
-    def testLogging():
+    def testLogging(self):
         self._logger.info("This is a message")
 
 
