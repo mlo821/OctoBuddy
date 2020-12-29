@@ -40,7 +40,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         self._logger.info("OctoBuddy Going to Bed Now!")
         self._logger.info(buttonpressed)
 
-    def button_callback(channel):
+    def button_callback(self, channel):
         self._logger.info("Button Pressed")
 
 
