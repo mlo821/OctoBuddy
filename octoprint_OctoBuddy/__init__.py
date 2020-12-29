@@ -44,10 +44,13 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
     def testLogging(self):
         self._logger.info("Button Finally Pressed")
 
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    GPIO.add_event_detect(22, GPIO.BOTH, callback=button_callback(self), bouncetime = 100)
+    setupGPIO(self)
+
+    def setupGPIO(self)
+        GPIO.setwarnings(False)
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(22, GPIO.BOTH, callback=button_callback(self), bouncetime = 100)
 
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = OctoBuddyPlugin()
