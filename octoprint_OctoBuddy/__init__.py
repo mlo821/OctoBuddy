@@ -16,7 +16,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-        GPIO.add_event_detect(11, GPIO.BOTH, callback=self.button_callback, bouncetime = 100)
+        GPIO.add_event_detect(11, GPIO.BOTH, callback=self.testLogging("Button Pressed"), bouncetime = 100)
         #GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         self._logger.info(GPIO.RPI_INFO)
         self.testLogging("Sending a message from startup")
