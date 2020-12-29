@@ -45,7 +45,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         self._logger.info("Button Pressed")
 
     def testLogging():
-        self._logger.info(message)
+        self._logger.info("This is a message")
 
 
 __plugin_pythoncompat__ = ">=2.7,<4"
