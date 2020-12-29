@@ -6,7 +6,7 @@ import octoprint.plugin
 import RPi.GPIO as GPIO
 
 buttonpressed = False
-
+import os
 
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownPlugin):
@@ -20,7 +20,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         self._logger.info(buttonpressed)
 
     def button_callback(channel):
-	    buttonpressed = true;
+	    os.system('sudo shutdown -r now')
 
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
