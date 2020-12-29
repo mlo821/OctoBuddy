@@ -20,7 +20,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         self._logger.info(buttonpressed)
 
     def button_callback(channel):
-        self._logger.info("Button Pressed")
+	    buttonpressed = true;
 
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
