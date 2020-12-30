@@ -14,7 +14,6 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         self._logger.info("OctoBuddy Alive Now!")
         self._logger.info(self._printer.get_state_id())
         self._logger.info(GPIO.RPI_INFO)
-        self._setup_sensor()
         self.setup_GPIO();
 
     def on_shutdown(self):
