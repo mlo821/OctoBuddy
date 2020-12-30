@@ -12,7 +12,6 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
 
     def on_after_startup(self):
         self._logger.info("OctoBuddy Alive Now!")
-        self._logger.info(buttonpressed)
         self._logger.info(self._printer.get_state_id())
         self._logger.info(GPIO.RPI_INFO)
         self._setup_sensor()
@@ -23,7 +22,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         self._logger.info("OctoBuddy Going to Bed Now!")
         self._logger.info("Test")
 
-    def button_callback(self):
+    def button_callback(self, channel):
         self._logger.info("test")
         self._logger.info("and I have to type this again")
 
@@ -31,7 +30,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(22, GPIO.RISING, callback=self.button_callback, bouncetime = 400)
+        GPIO.add_event_detect(22, GPIO.RISING, callback=self.button_callback(), bouncetime = 400)
 
 
 
