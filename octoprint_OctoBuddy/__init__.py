@@ -42,8 +42,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
     def _setup_sensor(self):
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
+    GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.add_event_detect(22, GPIO.RISING, callback=button_callback, bouncetime = 400)
 
 __plugin_pythoncompat__ = ">=2.7,<4"
