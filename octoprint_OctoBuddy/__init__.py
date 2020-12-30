@@ -36,7 +36,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         self._logger.info("OctoBuddy Going to Bed Now!")
         self._logger.info(buttonpressed)
 
-    def button_callback(self, channel):
+    def button_callback(channel):
         self._logger.debug("asshole work")
 
     def testLogging(self):
@@ -45,7 +45,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    GPIO.add_event_detect(22, GPIO.BOTH, callback=button_callback(self), bouncetime = 100)
+    GPIO.add_event_detect(22, GPIO.BOTH, callback=button_callback, bouncetime = 100)
 
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = OctoBuddyPlugin()
