@@ -48,5 +48,5 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
 
     setup_GPIO()
 
-    __plugin_pythoncompat__ = ">=2.7,<4"
-    __plugin_implementation__ = OctoBuddyPlugin()
+__plugin_pythoncompat__ = ">=2.7,<4"
+__plugin_implementation__ = OctoBuddyPlugin()
