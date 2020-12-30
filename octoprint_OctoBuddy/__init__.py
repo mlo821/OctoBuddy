@@ -39,7 +39,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
     def button_callback(self, _):
         self._logger.debug("asshole work")
 
-    def _setup_sensor(self)
+    def _setup_sensor(self):
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
