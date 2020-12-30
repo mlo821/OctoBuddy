@@ -40,7 +40,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         newself = self
         newself._logger.debug("asshole work")
 
-    def setup_GPIO(self)
+    def setup_GPIO(self):
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
