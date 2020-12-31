@@ -26,7 +26,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         self._logger.info("test")
         self._logger.info("and I have to type this again")
 
-        if channel == 22:
+        if channel == 24:
             self._printer.home("x")
             self._printer.home("y")
             self._printer.home("z")
