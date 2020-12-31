@@ -25,7 +25,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
     def button_callback(self, channel):
         self._logger.info("test")
         self._logger.info("and I have to type this again")
-        self._printer.home("z")
+        self._printer.home("x", "y", "z")
 
     def setup_GPIO(self):
         GPIO.setwarnings(False)
