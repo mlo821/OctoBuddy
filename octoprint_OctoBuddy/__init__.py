@@ -25,15 +25,19 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
     def button_callback(self, channel):
         self._logger.info("test")
         self._logger.info("and I have to type this again")
-        self._printer.home("x")
-        self._printer.home("y")
-        self._printer.home("z")
+
+        if channel == 22:
+            self._printer.home("x")
+            self._printer.home("y")
+            self._printer.home("z")
 
     def setup_GPIO(self):
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.add_event_detect(22, GPIO.RISING, callback=self.button_callback, bouncetime = bouncetime_button)
+        GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(24, GPIO.RISING, callback=self.button_callback, bouncetime = bouncetime_button)
 
 
 
