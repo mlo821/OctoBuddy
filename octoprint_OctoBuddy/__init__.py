@@ -35,10 +35,32 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def setup_GPIO(self):
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(22, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
         GPIO.setup(self.home_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.add_event_detect(self.home_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+
+        GPIO.setup(self.resume_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(self.resume_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+
+        GPIO.setup(self.pause_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(self.pause_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+
+        GPIO.setup(self.x_pin_pos, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(self.x_pin_pos, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+
+        GPIO.setup(self.x_pin_neg, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(self.x_pin_neg, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+
+        GPIO.setup(self.y_pin_pos, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(self.y_pin_pos, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+
+        GPIO.setup(self.y_pin_neg, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(y_pin_neg.home_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+
+        GPIO.setup(self.z_pin_pos, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(self.z_pin_pos, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+
+        GPIO.setup(self.z_pin_neg, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(self.z_pin_neg, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
     def get_settings_defaults(self):
         return dict(
