@@ -23,7 +23,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
 
     def button_callback(self, channel):
-        self._logger.info("Channel %s was pressed", channel)
+        self._logger.info("%s was pressed, its state is %s = ", channel, GPIO.gpio_function(channel))
 
         if channel == self.home_pin:
             self._printer.home("x")
@@ -81,12 +81,16 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
                 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
                 GPIO.add_event_detect(channel, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
                 self._logger.info("New Event Detect has been added to GPIO # %s", channel)
+                self._logger.info("The new GPIO # %s state is %s = ", channel, GPIO.gpio_function(channel))
+
 
         except:
             self._logger.exception("Cannot setup GPIO ports %s, check to makes sure you don't have the same ports assigned to multiple actions", str(channel))
 
     def RemoveEventDetects(self): #4
         GPIO.remove_event_detect(self.home_pin)
+        self._logger.info("Home pin state is %s = ",  GPIO.gpio_function(self.home_pin))
+
         GPIO.remove_event_detect(self.resume_pin)
         GPIO.remove_event_detect(self.pause_pin)
         GPIO.remove_event_detect(self.x_pin_pos)
@@ -95,6 +99,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         GPIO.remove_event_detect(self.y_pin_neg)
         GPIO.remove_event_detect(self.z_pin_pos)
         GPIO.remove_event_detect(self.z_pin_neg)
+
 
     def on_shutdown(self):
         GPIO.cleanup()
