@@ -74,7 +74,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
     def get_settings_defaults(self):
         return dict(
-			home_pin	= 23,   # Default is no pin
+			home_pin	= 24,   # Default is no pin
 			x_pin_pos   = 16,
 			x_pin_neg   = 13,
 			y_pin_pos   = 11,
