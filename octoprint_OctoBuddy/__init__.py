@@ -11,7 +11,8 @@ bouncetime_button = 400
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 					  octoprint.plugin.ShutdownPlugin,
-					  octoprint.plugin.SettingsPlugin):
+					  octoprint.plugin.SettingsPlugin,
+					  octoprint.plugin.TemplatePlugin):
 
     def on_after_startup(self):
         self._logger.info("OctoBuddy Alive Now!")
