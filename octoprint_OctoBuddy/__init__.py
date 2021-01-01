@@ -53,7 +53,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def debounce(self):
         return int(self._settings.get(["debounce"]))
 
-	@property
+    @property
     def home_pin(self):
         return int(self._settings.get(["home_pin"]))
 
