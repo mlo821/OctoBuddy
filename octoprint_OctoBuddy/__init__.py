@@ -44,8 +44,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 			debounce    = 400,  # Debounce
 		)
 
-    def get_template_configs(self):
-        return [dict(type = "settings", custom_bindings=False)]
+    #def get_template_configs(self):
+    #    return [dict(type = "settings", custom_bindings=False)]
 
     #@property
     #def debounce(self):
