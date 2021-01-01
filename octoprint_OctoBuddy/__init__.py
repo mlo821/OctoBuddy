@@ -36,35 +36,30 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
 
-        for setting in self._settings.get([pins]):
-            self.SetupSingleGPIO(setting)
-        #self.SetupSingleGPIO(self.home_pin)
-        #self.SetupSingleGPIO(self.resume_pin)
-        #self.SetupSingleGPIO(self.pause_pin)
-        #self.SetupSingleGPIO(self.x_pin_pos)
-        #self.SetupSingleGPIO(self.x_pin_neg)
-        #self.SetupSingleGPIO(self.y_pin_pos)
-        #self.SetupSingleGPIO(self.y_pin_neg)
-        #self.SetupSingleGPIO(self.z_pin_pos)
-        #self.SetupSingleGPIO(self.z_pin_neg)
+        self.SetupSingleGPIO(self.home_pin)
+        self.SetupSingleGPIO(self.resume_pin)
+        self.SetupSingleGPIO(self.pause_pin)
+        self.SetupSingleGPIO(self.x_pin_pos)
+        self.SetupSingleGPIO(self.x_pin_neg)
+        self.SetupSingleGPIO(self.y_pin_pos)
+        self.SetupSingleGPIO(self.y_pin_neg)
+        self.SetupSingleGPIO(self.z_pin_pos)
+        self.SetupSingleGPIO(self.z_pin_neg)
 
 
     def get_settings_defaults(self):
         return dict(
-			pins=dict(
-			    home_pin	= 24,   # Default is no pin
-			    x_pin_pos   = 16,
-			    x_pin_neg   = 13,
-			    y_pin_pos   = 11,
-			    y_pin_neg   = 12,
-			    z_pin_pos   = 15,
-			    z_pin_neg   = 22,
-			    resume_pin  = 23,
-			    pause_pin   = 21,
-			),
-
+		    home_pin	= 24,   
+		    x_pin_pos   = 16,
+		    x_pin_neg   = 13,
+		    y_pin_pos   = 11,
+		    y_pin_neg   = 12,
+		    z_pin_pos   = 15,
+		    z_pin_neg   = 22,
+		    resume_pin  = 23,
+		    pause_pin   = 21,
 			e_stop_pin = -1,
-			debounce    = 400,  # Debounce
+			debounce    = 400,  
 		)
 
     def get_template_configs(self):

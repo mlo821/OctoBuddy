@@ -4,7 +4,7 @@
     <div class="control-group">
         <label class="control-label">{{ _('Home Pin:') }}</label>
         <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your home button is attached to.') }}">
-			<select data-bind="value: settings.plugins.OctoBuddy.pins.home_pin">
+			<select data-bind="value: settings.plugins.OctoBuddy.home_pin">
 				<option value="-1">Disabled</option>
 				<option value="3">BOARD 3</option>
 				<option value="5">BOARD 5</option>
@@ -42,7 +42,7 @@
   <div class="control-group">
     <label class="control-label">{{ _('Pause Print Pin:') }}</label>
     <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your pause button is attached to.') }}">
-      <select data-bind="value: settings.plugins.OctoBuddy.pins.pause_pin">
+      <select data-bind="value: settings.plugins.OctoBuddy.pause_pin">
         <option value="-1">Disabled</option>
         <option value="3">BOARD 3</option>
         <option value="5">BOARD 5</option>
@@ -80,7 +80,7 @@
   <div class="control-group">
     <label class="control-label">{{ _('Resume Print Pin:') }}</label>
     <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your resume button is attached to.') }}">
-      <select data-bind="value: settings.plugins.OctoBuddy.pins.resume_pin">
+      <select data-bind="value: settings.plugins.OctoBuddy.resume_pin">
         <option value="-1">Disabled</option>
         <option value="3">BOARD 3</option>
         <option value="5">BOARD 5</option>
@@ -118,7 +118,7 @@
   <div class="control-group">
     <label class="control-label">{{ _('Jog X+ Pin:') }}</label>
     <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your jog X+ button is attached to.') }}">
-      <select data-bind="value: settings.plugins.OctoBuddy.pins.x_pin_pos">
+      <select data-bind="value: settings.plugins.OctoBuddy.x_pin_pos">
         <option value="-1">Disabled</option>
         <option value="3">BOARD 3</option>
         <option value="5">BOARD 5</option>
@@ -156,7 +156,7 @@
   <div class="control-group">
     <label class="control-label">{{ _('Jog X- Pin:') }}</label>
     <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your jog X- button is attached to.') }}">
-      <select data-bind="value: settings.plugins.OctoBuddy.pins.x_pin_neg">
+      <select data-bind="value: settings.plugins.OctoBuddy.x_pin_neg">
         <option value="-1">Disabled</option>
         <option value="3">BOARD 3</option>
         <option value="5">BOARD 5</option>
@@ -194,7 +194,7 @@
   <div class="control-group">
     <label class="control-label">{{ _('Jog Y+ Pin:') }}</label>
     <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your jog Y+ button is attached to.') }}">
-      <select data-bind="value: settings.plugins.OctoBuddy.pins.y_pin_pos">
+      <select data-bind="value: settings.plugins.OctoBuddy.y_pin_pos">
         <option value="-1">Disabled</option>
         <option value="3">BOARD 3</option>
         <option value="5">BOARD 5</option>
@@ -232,7 +232,7 @@
   <div class="control-group">
     <label class="control-label">{{ _('Jog Y- Pin:') }}</label>
     <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your jog Y- button is attached to.') }}">
-      <select data-bind="value: settings.plugins.OctoBuddy.pins.y_pin_neg">
+      <select data-bind="value: settings.plugins.OctoBuddy.y_pin_neg">
         <option value="-1">Disabled</option>
         <option value="3">BOARD 3</option>
         <option value="5">BOARD 5</option>
@@ -270,7 +270,7 @@
   <div class="control-group">
     <label class="control-label">{{ _('Jog Z+ Pin:') }}</label>
     <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your jog Z+ button is attached to.') }}">
-      <select data-bind="value: settings.plugins.OctoBuddy.pins.z_pin_pos">
+      <select data-bind="value: settings.plugins.OctoBuddy.z_pin_pos">
         <option value="-1">Disabled</option>
         <option value="3">BOARD 3</option>
         <option value="5">BOARD 5</option>
@@ -308,7 +308,7 @@
   <div class="control-group">
     <label class="control-label">{{ _('Jog Z- Pin:') }}</label>
     <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your jog Z- button is attached to.') }}">
-      <select data-bind="value: settings.plugins.OctoBuddy.pins.z_pin_neg">
+      <select data-bind="value: settings.plugins.OctoBuddy.z_pin_neg">
         <option value="-1">Disabled</option>
         <option value="3">BOARD 3</option>
         <option value="5">BOARD 5</option>
