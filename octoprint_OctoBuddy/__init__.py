@@ -20,7 +20,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     #    self._logger.info(GPIO.RPI_INFO)
     #    self.setup_GPIO()
 
-    def on_shutdown(self):
+    #def on_shutdown(self):
     #    GPIO.cleanup()
     #    self._logger.info("OctoBuddy Going to Bed Now!")
 
