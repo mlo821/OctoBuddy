@@ -112,8 +112,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
     def SetupSingleGPIO(self, channel):
         try:
-			if channel != -1:
-			    self.cleanupGPIO(channel)
+            if channel != -1:
+                self.cleanupGPIO(channel)
                 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
                 GPIO.add_event_detect(channel, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
                 self._logger.info("# %s GPIO channel setup", channel)
