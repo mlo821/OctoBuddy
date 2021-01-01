@@ -9,7 +9,9 @@ import os
 
 bouncetime_button = 400
 
-class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownPlugin):
+class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
+					  octoprint.plugin.ShutdownPlugin,
+					  octoprint.plugin.SettingsPlugin):
 
     def on_after_startup(self):
         self._logger.info("OctoBuddy Alive Now!")
@@ -35,12 +37,19 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.ShutdownP
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(22, GPIO.RISING, callback=self.button_callback, bouncetime = bouncetime_button)
+        GPIO.add_event_detect(22, GPIO.RISING, callback=self.button_callback, bouncetime = debounce)
         GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(23, GPIO.RISING, callback=self.button_callback, bouncetime = bouncetime_button)
+        GPIO.add_event_detect(23, GPIO.RISING, callback=self.button_callback, bouncetime = debounce)
 
+    def get_settings_defaults(self):
+        return dict(
+			home_pin	= 24,   # Default is no pin
+			debounce    = 400,  # Debounce
+		)
 
-
-
+    @property
+    def bounce(self):
+        return int(self._settings.get(["debounce"]))
+        
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = OctoBuddyPlugin()
