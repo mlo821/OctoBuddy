@@ -38,7 +38,6 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         self.SetupSingleGPIO(self.home_pin)
         self.SetupSingleGPIO(self.resume_pin)
         self.SetupSingleGPIO(self.pause_pin)
-        self.SetupSingleGPIO(self.resume_pin)
         self.SetupSingleGPIO(self.x_pin_pos)
         self.SetupSingleGPIO(self.x_pin_neg)
         self.SetupSingleGPIO(self.y_pin_pos)
