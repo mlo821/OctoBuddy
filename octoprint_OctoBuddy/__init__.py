@@ -35,32 +35,43 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def setup_GPIO(self):
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(self.home_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self.home_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
-        GPIO.setup(self.resume_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self.resume_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+        setup_GPIO(self.home_pin)
+        setup_GPIO(self.resume_pin)
+        setup_GPIO(self.pause_pin)
+        setup_GPIO(self.resume_pin)
+        setup_GPIO(self.x_pin_pos)
+        setup_GPIO(self.x_pin_neg)
+        setup_GPIO(self.y_pin_pos)
+        setup_GPIO(self.y_pin_neg)
+        setup_GPIO(self.z_pin_pos)
+        setup_GPIO(self.z_pin_neg)
+        #GPIO.setup(self.home_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        #GPIO.add_event_detect(self.home_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
-        GPIO.setup(self.pause_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self.pause_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+        #GPIO.setup(self.resume_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        #GPIO.add_event_detect(self.resume_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
-        GPIO.setup(self.x_pin_pos, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self.x_pin_pos, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+        #GPIO.setup(self.pause_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        #GPIO.add_event_detect(self.pause_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
-        GPIO.setup(self.x_pin_neg, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self.x_pin_neg, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+        #GPIO.setup(self.x_pin_pos, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        #GPIO.add_event_detect(self.x_pin_pos, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
-        GPIO.setup(self.y_pin_pos, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self.y_pin_pos, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+        #GPIO.setup(self.x_pin_neg, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        #GPIO.add_event_detect(self.x_pin_neg, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
-        GPIO.setup(self.y_pin_neg, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(y_pin_neg.home_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+        #GPIO.setup(self.y_pin_pos, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        #GPIO.add_event_detect(self.y_pin_pos, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
-        GPIO.setup(self.z_pin_pos, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self.z_pin_pos, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+        #GPIO.setup(self.y_pin_neg, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        #GPIO.add_event_detect(y_pin_neg.home_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
-        GPIO.setup(self.z_pin_neg, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self.z_pin_neg, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+        #GPIO.setup(self.z_pin_pos, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        #GPIO.add_event_detect(self.z_pin_pos, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+
+        #GPIO.setup(self.z_pin_neg, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        #GPIO.add_event_detect(self.z_pin_neg, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
     def get_settings_defaults(self):
         return dict(
@@ -88,11 +99,46 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def home_pin(self):
         return int(self._settings.get(["home_pin"]))
 
+    @property
+    def debounce(self):
+        return int(self._settings.get(["pause_pin"]))
+
+    @property
+    def home_pin(self):
+        return int(self._settings.get(["resume_pin"]))
+
+    @property
+    def debounce(self):
+        return int(self._settings.get(["x_pin_pos"]))
+
+    @property
+    def home_pin(self):
+        return int(self._settings.get(["x_pin_neg"]))
+
+    @property
+    def debounce(self):
+        return int(self._settings.get(["y_pin_pos"]))
+
+    @property
+    def home_pin(self):
+        return int(self._settings.get(["y_pin_neg"]))
+
+    @property
+    def debounce(self):
+        return int(self._settings.get(["z_pin_pos"]))
+
+    @property
+    def home_pin(self):
+        return int(self._settings.get(["z_pin_neg"]))
+
     def on_settings_save(self, data):
         octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
         self._logger.info("OctoBuddy settings changed, updating GPIO setup")
         self.setup_GPIO()
-    
+
+    def SetupSingleGPIO(self, channel):
+        GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(channel, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
         
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = OctoBuddyPlugin()
