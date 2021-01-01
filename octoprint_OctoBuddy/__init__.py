@@ -78,7 +78,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         try:
             if channel != -1:
  
-                GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+                GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
                 GPIO.add_event_detect(channel, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
                 self._logger.info("New Event Detect has been added to GPIO # %s", channel)
 
