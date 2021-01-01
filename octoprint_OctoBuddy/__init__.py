@@ -78,7 +78,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         try:
             if channel != -1:
  
-                GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+                GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
                 GPIO.add_event_detect(channel, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
                 self._logger.info("New Event Detect has been added to GPIO # %s", channel)
 
@@ -99,17 +99,6 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def on_shutdown(self):
         GPIO.cleanup()
         self._logger.info("OctoBuddy Going to Bed Now!")
-    #def cleanupGPIO(self, channel):
-        #try:
-        #    GPIO.remove_event_detect(channel)
-        #    self._logger.info("Old Event Detect removed from GPIO # %s", channel)
-
-        #except:
-        #    pass
-        #try:
-            #GPIO.cleanup()
-        #except:
-        #    pass
 
     @property
     def debounce(self):
@@ -154,5 +143,6 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     @property
     def e_stop_pin(self):
         return int(self._settings.get(["e_stop_pin"])) #3
+
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = OctoBuddyPlugin()
