@@ -46,8 +46,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         self.SetupSingleGPIO(self.z_pin_pos)
         self.SetupSingleGPIO(self.z_pin_neg)
         self.SetupSingleGPIO(self.e_stop_pin)
-
-    def get_settings_defaults(self):
+		#1
+    def get_settings_defaults(self): 
         return dict(
 		    home_pin	= 24,   
 		    x_pin_pos   = 16,
@@ -59,7 +59,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 		    resume_pin  = 23,
 		    pause_pin   = 21,
 			e_stop_pin = -1,
-			debounce    = 400,  
+			debounce    = 400,
+			#2
 		)
 
     def get_template_configs(self):
@@ -107,12 +108,14 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
     @property
     def e_stop_pin(self):
-        return int(self._settings.get(["e_stop_pin"]))
+        return int(self._settings.get(["e_stop_pin"])) #3
 
     def on_settings_save(self, data):
+        GPIO.cleanup()
+        self.RemoveEventDetects(); #remove all active event detects
         octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
         self._logger.info("OctoBuddy settings changed, updating GPIO setup")
-        GPIO.cleanup()
+
         self.setup_GPIO()
 
     def SetupSingleGPIO(self, channel):
@@ -125,6 +128,17 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
         except:
             self._logger.exception("Cannot setup GPIO ports %s, check to makes sure you don't have the same ports assigned to multiple actions", str(channel))
+
+    def RemoveEventDetects(self): #4
+        GPIO.remove_event_detect(self.home_pin)
+        GPIO.remove_event_detect(self.resume_pin)
+        GPIO.remove_event_detect(self.pause_pin)
+        GPIO.remove_event_detect(self.x_pin_pos)
+        GPIO.remove_event_detect(self.x_pin_neg)
+        GPIO.remove_event_detect(self.y_pin_pos)
+        GPIO.remove_event_detect(self.y_pin_neg)
+        GPIO.remove_event_detect(self.z_pin_pos)
+        GPIO.remove_event_detect(self.z_pin_neg)
 
     #def cleanupGPIO(self, channel):
         #try:
