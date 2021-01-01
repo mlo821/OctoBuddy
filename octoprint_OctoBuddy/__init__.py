@@ -44,8 +44,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 			debounce    = 400,  # Debounce
 		)
 
-    #def get_template_configs(self):
-    #    return [dict(type = "settings", custom_bindings=False)]
+    def get_template_configs(self):
+        return [dict(type = "settings", custom_bindings=False)]
 
     #@property
     #def debounce(self):
@@ -55,14 +55,14 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     #def home_pin(self):
      #   return int(self._settings.get(["home_pin"]))
 
-    def on_settings_save(self):
-        self._logger.info("I am here")
+    #def on_settings_save(self):
+    #   self._logger.info("I am here")
 
-        octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
-        try:
-            self._logger.info("Settings Changed... maybe")
-        except:
-            self._logger.info("There was a problem changing settings")
+     #   octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
+    #    try:
+    #        self._logger.info("Settings Changed... maybe")
+    #    except:
+    #        self._logger.info("There was a problem changing settings")
 
 
         #self._logger.info("OctoBuddy settings changed, updating GPIO setup")
