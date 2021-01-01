@@ -99,35 +99,35 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         return int(self._settings.get(["home_pin"]))
 
     @property
-    def debounce(self):
+    def pause_pin(self):
         return int(self._settings.get(["pause_pin"]))
 
     @property
-    def home_pin(self):
+    def resume_pin(self):
         return int(self._settings.get(["resume_pin"]))
 
     @property
-    def debounce(self):
+    def x_pin_pos(self):
         return int(self._settings.get(["x_pin_pos"]))
 
     @property
-    def home_pin(self):
+    def x_pin_neg(self):
         return int(self._settings.get(["x_pin_neg"]))
 
     @property
-    def debounce(self):
+    def y_pin_pos(self):
         return int(self._settings.get(["y_pin_pos"]))
 
     @property
-    def home_pin(self):
+    def y_pin_neg(self):
         return int(self._settings.get(["y_pin_neg"]))
 
     @property
-    def debounce(self):
+    def z_pin_pos(self):
         return int(self._settings.get(["z_pin_pos"]))
 
     @property
-    def home_pin(self):
+    def z_pin_neg(self):
         return int(self._settings.get(["z_pin_neg"]))
 
     def on_settings_save(self, data):
