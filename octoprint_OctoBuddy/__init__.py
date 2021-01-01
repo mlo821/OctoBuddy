@@ -57,8 +57,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
      #   return int(self._settings.get(["home_pin"]))
 
     def on_settings_save(self):
-        octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
         self._logger.info("Settings Changed... maybe")
+        octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
         #self._logger.info("OctoBuddy settings changed, updating GPIO setup")
         #self.setup_GPIO()
     
