@@ -120,7 +120,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
                 self.cleanupGPIO(channel)
                 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
                 GPIO.add_event_detect(channel, GPIO.FALLING, callback=self.button_callback, bouncetime = self.debounce)
-                self._logger.info("# %s GPIO channel setup, current state is %s", channel, GPIO.gpio_function(channel))
+                self._logger.info("New Event Detect has been added to GPIO # %s", channel)
 
         except:
             self._logger.exception("Cannot setup GPIO ports %s, check to makes sure you don't have the same ports assigned to multiple actions", str(channel))
@@ -128,6 +128,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def cleanupGPIO(self, channel):
         try:
             GPIO.remove_event_detect(channel)
+            self._logger.info("New Event Detect has been added to GPIO # %s", channel)
+
         except:
             pass
         try:
