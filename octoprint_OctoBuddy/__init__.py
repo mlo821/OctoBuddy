@@ -105,6 +105,10 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def z_pin_neg(self):
         return int(self._settings.get(["z_pin_neg"]))
 
+    @property
+    def e_stop_pin(self):
+        return int(self._settings.get(["e_stop_pin"]))
+
     def on_settings_save(self, data):
         octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
         self._logger.info("OctoBuddy settings changed, updating GPIO setup")
@@ -123,9 +127,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
     def cleanupGPIO(self, channel):
         try:
-            self._logger.info("About to remove event detect from %s, current state is %s", channel, GPIO.gpio_function(channel))
             GPIO.remove_event_detect(channel)
-            self._logger.info("Removed event detect from %s, current state is %s", channel, GPIO.gpio_function(channel))
         except:
             pass
         try:
