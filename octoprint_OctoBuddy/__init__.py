@@ -22,11 +22,9 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def on_shutdown(self):
         GPIO.cleanup();
         self._logger.info("OctoBuddy Going to Bed Now!")
-        self._logger.info("Test")
 
     def button_callback(self, channel):
-        self._logger.info("test")
-        self._logger.info("and I have to type this again")
+        self._logger.info(channel + "Pressed")
 
         if channel == 23:
             self._printer.home("x")
