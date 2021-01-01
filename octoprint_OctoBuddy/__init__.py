@@ -53,10 +53,10 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def debounce(self):
         return int(self._settings.get(["debounce"]))
 
-    #def on_settings_save(self):
-        #octoprint.plugin.SettingsPlugin.on_settings_save(self,data)
-        #self._logger.info("OctoBuddy settings changed, updating GPIO setup")
-        #self.setup_GPIO()
+    def on_settings_save(self):
+        octoprint.plugin.SettingsPlugin.on_settings_save(self,data)
+        self._logger.info("OctoBuddy settings changed, updating GPIO setup")
+        self.setup_GPIO()
     
         
 __plugin_pythoncompat__ = ">=2.7,<4"
