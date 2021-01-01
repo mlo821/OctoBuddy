@@ -27,7 +27,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def button_callback(self, channel):
         self._logger.info(channel + "Pressed")
 
-        if channel == 23:
+        if channel == home_pin:
             self._printer.home("x")
             self._printer.home("y")
             self._printer.home("z")
@@ -38,7 +38,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.add_event_detect(22, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
         GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(23, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+        GPIO.add_event_detect(home_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
     def get_settings_defaults(self):
         return dict(
@@ -52,6 +52,9 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     @property
     def debounce(self):
         return int(self._settings.get(["debounce"]))
+
+	def home_pin(self):
+		return int(self._settings.get(["home_pin"]))
 
     def on_settings_save(self):
         octoprint.plugin.SettingsPlugin.on_settings_save(self,data)
