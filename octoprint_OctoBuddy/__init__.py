@@ -25,7 +25,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         self._logger.info("OctoBuddy Going to Bed Now!")
 
     def button_callback(self, channel):
-        self._logger.info(channel)
+        self._logger.info("Channel %s was pressed", channel)
 
         if channel == self.home_pin:
             self._printer.home("x")
