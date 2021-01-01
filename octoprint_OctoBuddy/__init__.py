@@ -41,13 +41,18 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
     def get_settings_defaults(self):
         return dict(
-			home_pin	= 24,   # Default is no pin
+			home_pin	= 23,   # Default is no pin
 			debounce    = 400,  # Debounce
 		)
+
+    def get_template_configs(self):
+        return [dict(type = "settings", custom_bindings=False)]
 
     @property
     def debounce(self):
         return int(self._settings.get(["debounce"]))
+
+    
         
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = OctoBuddyPlugin()
