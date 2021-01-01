@@ -81,7 +81,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
                 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
                 GPIO.add_event_detect(channel, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
                 self._logger.info("New Event Detect has been added to GPIO # %s", channel)
-                self._logger.info("The new GPIO # %s state is %s = ", channel, GPIO.gpio_function(channel))
+                self._logger.info("The new GPIO # %s state is %s ", channel, GPIO.gpio_function(channel))
 
 
         except:
@@ -89,7 +89,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
     def RemoveEventDetects(self): #4
         GPIO.remove_event_detect(self.home_pin)
-        self._logger.info("Home pin state is %s = ",  GPIO.gpio_function(self.home_pin))
+        func = GPIO.gpio_function(self.home_pin)
+        self._logger.info("Home pin state is %s", func)
 
         GPIO.remove_event_detect(self.resume_pin)
         GPIO.remove_event_detect(self.pause_pin)
