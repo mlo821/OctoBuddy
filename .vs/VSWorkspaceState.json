@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\octoprint_OctoBuddy"
+    "\\octoprint_OctoBuddy",
+    "\\octoprint_OctoBuddy\\templates"
   ],
-  "SelectedNode": "\\octoprint_OctoBuddy\\__init__.py",
+  "SelectedNode": "\\octoprint_OctoBuddy\\templates\\OctoBuddy_settings.jinja2",
   "PreviewInSolutionExplorer": false
 }
