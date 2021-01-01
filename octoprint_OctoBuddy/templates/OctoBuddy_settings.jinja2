@@ -342,6 +342,44 @@
       <div class="help-block">{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your jog Z- button is attached to.') }}</div>
     </div>
   </div>
+
+  <div class="control-group">
+    <label class="control-label">{{ _('E-Stop Pin:') }}</label>
+    <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your E-Stop button is attached to.') }}">
+      <select data-bind="value: settings.plugins.OctoBuddy.e_stop_pin">
+        <option value="-1">Disabled</option>
+        <option value="3">BOARD 3</option>
+        <option value="5">BOARD 5</option>
+        <option value="7">BOARD 7</option>
+        <option value="8">BOARD 8</option>
+        <option value="10">BOARD 10</option>
+        <option value="12">BOARD 12</option>
+        <option value="11">BOARD 11</option>
+        <option value="13">BOARD 13</option>
+        <option value="15">BOARD 15</option>
+        <option value="16">BOARD 16</option>
+        <option value="18">BOARD 18</option>
+        <option value="19">BOARD 19</option>
+        <option value="21">BOARD 21</option>
+        <option value="22">BOARD 22</option>
+        <option value="23">BOARD 23</option>
+        <option value="24">BOARD 24</option>
+        <option value="25">BOARD 25</option>
+        <option value="26">BOARD 26</option>
+        <option value="29">BOARD 29</option>
+        <option value="31">BOARD 31</option>
+        <option value="32">BOARD 32</option>
+        <option value="33">BOARD 33</option>
+        <option value="35">BOARD 35</option>
+        <option value="36">BOARD 36</option>
+        <option value="37">BOARD 37</option>
+        <option value="38">BOARD 38</option>
+        <option value="39">BOARD 39</option>
+        <option value="40">BOARD 40</option>
+      </select>
+      <div class="help-block">{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your E-stop button is attached to.') }}</div>
+    </div>
+  </div>
   
   <div class="control-group">
         <label class="control-label">{{ _('Debounce Time:') }}</label>
