@@ -61,7 +61,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 			    z_pin_neg   = 22,
 			    resume_pin  = 23,
 			    pause_pin   = 21,
-			}
+			)
 			e_stop_pin = -1,
 			debounce    = 400,  # Debounce
 		)
