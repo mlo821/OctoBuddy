@@ -53,8 +53,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def debounce(self):
         return int(self._settings.get(["debounce"]))
 
-	def home_pin(self):
-		return int(self._settings.get(["home_pin"]))
+    def home_pin(self):
+        return int(self._settings.get(["home_pin"]))
 
     def on_settings_save(self):
         octoprint.plugin.SettingsPlugin.on_settings_save(self,data)
