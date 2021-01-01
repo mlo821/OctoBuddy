@@ -45,7 +45,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         self.SetupSingleGPIO(self.y_pin_neg)
         self.SetupSingleGPIO(self.z_pin_pos)
         self.SetupSingleGPIO(self.z_pin_neg)
-		self.SetupSingleGPIO(self.e_stop_pin)
+        self.SetupSingleGPIO(self.e_stop_pin)
 
     def get_settings_defaults(self):
         return dict(
