@@ -27,7 +27,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def button_callback(self, channel):
         self._logger.info(channel)
 
-        if channel == home_pin:
+        if channel == self.home_pin:
             self._printer.home("x")
             self._printer.home("y")
             self._printer.home("z")
