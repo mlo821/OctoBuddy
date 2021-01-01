@@ -18,10 +18,10 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         self._logger.info("OctoBuddy Alive Now!")
         self._logger.info(self._printer.get_state_id())
         self._logger.info(GPIO.RPI_INFO)
-        self.setup_GPIO();
+        self.setup_GPIO()
 
     def on_shutdown(self):
-        GPIO.cleanup();
+        GPIO.cleanup()
         self._logger.info("OctoBuddy Going to Bed Now!")
 
     def button_callback(self, channel):
@@ -53,6 +53,9 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def debounce(self):
         return int(self._settings.get(["debounce"]))
 
+    def on_settings_save(self):
+        octoprint.plugin.SettingsPlugin.on_settings_save(self,data)
+        self.setup_GPIO()
     
         
 __plugin_pythoncompat__ = ">=2.7,<4"
