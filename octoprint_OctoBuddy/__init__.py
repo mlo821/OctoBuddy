@@ -10,9 +10,9 @@ import os
 #bouncetime_button = 400
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
-					  octoprint.plugin.ShutdownPlugin,
-					  octoprint.plugin.SettingsPlugin,
-					  octoprint.plugin.TemplatePlugin):
+					   octoprint.plugin.ShutdownPlugin,
+					   octoprint.plugin.SettingsPlugin,
+					   octoprint.plugin.TemplatePlugin):
 
     def on_after_startup(self):
         self._logger.info("OctoBuddy Alive Now!")
@@ -55,8 +55,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     #def home_pin(self):
      #   return int(self._settings.get(["home_pin"]))
 
-    #def on_settings_save(self):
-    #   self._logger.info("I am here")
+    def on_settings_save(self):
+        self._logger.info("Save triggered")
 
      #   octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
     #    try:
