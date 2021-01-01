@@ -3,7 +3,7 @@
     <div class="control-group">
         <label class="control-label">{{ _('Home Pin:') }}</label>
         <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your home button is attached to.') }}">
-			<select data-bind="value: settings.plugins.GPIOShutdown.home_pin">
+			<select data-bind="value: settings.plugins.OctoBuddy.home_pin">
 				<option value="-1">Disabled</option>
 				<option value="4">GPIO 4</option>
 				<option value="5">GPIO 5</option>
@@ -32,7 +32,7 @@
         <div class="controls" data-toggle="tooltip" title="{{ _('Debounce time for button presses.  This prevents a single button press from acting like multiple button presses due to signal bouncing.  System waits the specified amount of time before beginning to look for new presses') }}">
             <input type="number" step="any" min="0" class="input-mini text-right" data-bind="value: settings.plugins.OctoBuddy.debounce">
             <span class="add-on">ms</span>
-			<div class="help-block">{{ _('When press the shutdown switch, wait for this amount of time to wait for the signal to stabilize.') }}</div>
+			<div class="help-block">{{ _('Debounce time for button presses') }}</div>
         </div>
     </div>
 
