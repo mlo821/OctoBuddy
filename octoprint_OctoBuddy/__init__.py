@@ -58,8 +58,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
     def on_settings_save(self):
         octoprint.plugin.SettingsPlugin.on_settings_save(self,data)
-        self._logger.info("OctoBuddy settings changed, updating GPIO setup")
-        self.setup_GPIO()
+        #self._logger.info("OctoBuddy settings changed, updating GPIO setup")
+        #self.setup_GPIO()
     
         
 __plugin_pythoncompat__ = ">=2.7,<4"
