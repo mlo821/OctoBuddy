@@ -136,8 +136,12 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         self.setup_GPIO()
 
     def SetupSingleGPIO(self, channel):
-        GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(channel, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+        try:
+            GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+            GPIO.add_event_detect(channel, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+
+        except:
+            self._logger.exception("Cannot setup GPIO ports %s, check to makes sure you don't have the same ports assigned to multiple actions", str(channel))
         
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = OctoBuddyPlugin()
