@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 
 import os
 
-bouncetime_button = 400
+#bouncetime_button = 400
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 					  octoprint.plugin.ShutdownPlugin,
