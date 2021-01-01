@@ -37,8 +37,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.add_event_detect(22, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
-        GPIO.setup(home_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(home_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+        GPIO.setup(self.home_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(self.home_pin, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
     def get_settings_defaults(self):
         return dict(
@@ -57,7 +57,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         return int(self._settings.get(["home_pin"]))
 
     def on_settings_save(self):
-        octoprint.plugin.SettingsPlugin.on_settings_save(self,data)
+        octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
         #self._logger.info("OctoBuddy settings changed, updating GPIO setup")
         #self.setup_GPIO()
     
