@@ -48,7 +48,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 		)
 
     @property
-    def bounce(self):
+    def debounce(self):
         return int(self._settings.get(["debounce"]))
         
 __plugin_pythoncompat__ = ">=2.7,<4"
