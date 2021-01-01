@@ -56,6 +56,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
      #   return int(self._settings.get(["home_pin"]))
 
     def on_settings_save(self):
+        self._logger.info("I am here")
+
         octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
         try:
             self._logger.info("Settings Changed... maybe")
