@@ -111,8 +111,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         return int(self._settings.get(["e_stop_pin"])) #3
 
     def on_settings_save(self, data):
-        GPIO.cleanup()
         self.RemoveEventDetects(); #remove all active event detects
+        GPIO.cleanup()
         octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
         self._logger.info("OctoBuddy settings changed, updating GPIO setup")
 
