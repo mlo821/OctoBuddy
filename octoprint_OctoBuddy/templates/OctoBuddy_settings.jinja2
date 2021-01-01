@@ -1,0 +1,43 @@
+<h4>{{ _('OctoBuddy') }}</h4>
+<form class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label">{{ _('Home Pin:') }}</label>
+        <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your home button is attached to.') }}">
+			<select data-bind="value: settings.plugins.GPIOShutdown.home_pin">
+				<option value="-1">Disabled</option>
+				<option value="4">GPIO 4</option>
+				<option value="5">GPIO 5</option>
+				<option value="6">GPIO 6</option>
+				<option value="12">GPIO 12</option>
+				<option value="13">GPIO 13</option>
+				<option value="16">GPIO 16</option>
+				<option value="17">GPIO 17</option>
+				<option value="18">GPIO 18</option>
+				<option value="19">GPIO 19</option>
+				<option value="20">GPIO 20</option>
+				<option value="21">GPIO 21</option>
+				<option value="22">GPIO 22</option>
+				<option value="23">GPIO 23</option>
+				<option value="24">GPIO 24</option>
+				<option value="25">GPIO 25</option>
+				<option value="26">GPIO 26</option>
+				<option value="27">GPIO 27</option>
+			</select>
+			<div class="help-block">{{ _('Which Raspberry Pi GPIO pin your home button is attached to.') }}</div>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">{{ _('Debounce Time:') }}</label>
+        <div class="controls" data-toggle="tooltip" title="{{ _('Debounce time for button presses.  This prevents a single button press from acting like multiple button presses due to signal bouncing.  System waits the specified amount of time before beginning to look for new presses') }}">
+            <input type="number" step="any" min="0" class="input-mini text-right" data-bind="value: settings.plugins.OctoBuddy.debounce">
+            <span class="add-on">ms</span>
+			<div class="help-block">{{ _('When press the shutdown switch, wait for this amount of time to wait for the signal to stabilize.') }}</div>
+        </div>
+    </div>
+
+	<div>
+		<a target="_blank" href="https://www.raspberrypi.org/documentation/usage/gpio/">{{ _('Raspberry Pi GPIO Pinout') }}</a>
+	</div>
+
+</form>
