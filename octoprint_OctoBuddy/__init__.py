@@ -43,6 +43,15 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def get_settings_defaults(self):
         return dict(
 			home_pin	= 23,   # Default is no pin
+			x_pin_pos   = 16,
+			x_pin_neg   = 13,
+			y_pin_pos   = 11,
+			y_pin_neg   = 12,
+			z_pin_pos   = 15,
+			z_pin_neg   = 22,
+			resume_pin  = 23,
+			pause_pin   = 21,
+			e_stop_pin = -1,
 			debounce    = 400,  # Debounce
 		)
 
