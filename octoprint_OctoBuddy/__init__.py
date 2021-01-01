@@ -37,9 +37,9 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(22, GPIO.RISING, callback=self.button_callback, bouncetime = debounce)
+        GPIO.add_event_detect(22, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
         GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(23, GPIO.RISING, callback=self.button_callback, bouncetime = debounce)
+        GPIO.add_event_detect(23, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
 
     def get_settings_defaults(self):
         return dict(
