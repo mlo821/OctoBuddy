@@ -20,9 +20,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         self._logger.info(GPIO.RPI_INFO)
         self.setup_GPIO()
 
-    def on_shutdown(self):
-        GPIO.cleanup()
-        self._logger.info("OctoBuddy Going to Bed Now!")
+
 
     def button_callback(self, channel):
         self._logger.info("Channel %s was pressed", channel)
@@ -65,6 +63,53 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
     def get_template_configs(self):
         return [dict(type = "settings", custom_bindings=False)]
+
+
+
+    def on_settings_save(self, data):
+        self.RemoveEventDetects(); #remove all active event detects
+        GPIO.cleanup()
+        octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
+        self._logger.info("OctoBuddy settings changed, updating GPIO setup")
+
+        self.setup_GPIO()
+
+    def SetupSingleGPIO(self, channel):
+        try:
+            if channel != -1:
+ 
+                GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+                GPIO.add_event_detect(channel, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
+                self._logger.info("New Event Detect has been added to GPIO # %s", channel)
+
+        except:
+            self._logger.exception("Cannot setup GPIO ports %s, check to makes sure you don't have the same ports assigned to multiple actions", str(channel))
+
+    def RemoveEventDetects(self): #4
+        GPIO.remove_event_detect(self.home_pin)
+        GPIO.remove_event_detect(self.resume_pin)
+        GPIO.remove_event_detect(self.pause_pin)
+        GPIO.remove_event_detect(self.x_pin_pos)
+        GPIO.remove_event_detect(self.x_pin_neg)
+        GPIO.remove_event_detect(self.y_pin_pos)
+        GPIO.remove_event_detect(self.y_pin_neg)
+        GPIO.remove_event_detect(self.z_pin_pos)
+        GPIO.remove_event_detect(self.z_pin_neg)
+
+    def on_shutdown(self):
+        GPIO.cleanup()
+        self._logger.info("OctoBuddy Going to Bed Now!")
+    #def cleanupGPIO(self, channel):
+        #try:
+        #    GPIO.remove_event_detect(channel)
+        #    self._logger.info("Old Event Detect removed from GPIO # %s", channel)
+
+        #except:
+        #    pass
+        #try:
+            #GPIO.cleanup()
+        #except:
+        #    pass
 
     @property
     def debounce(self):
@@ -109,48 +154,5 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     @property
     def e_stop_pin(self):
         return int(self._settings.get(["e_stop_pin"])) #3
-
-    def on_settings_save(self, data):
-        self.RemoveEventDetects(); #remove all active event detects
-        GPIO.cleanup()
-        octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
-        self._logger.info("OctoBuddy settings changed, updating GPIO setup")
-
-        self.setup_GPIO()
-
-    def SetupSingleGPIO(self, channel):
-        try:
-            if channel != -1:
- 
-                GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-                GPIO.add_event_detect(channel, GPIO.FALLING, callback=self.button_callback, bouncetime = self.debounce)
-                self._logger.info("New Event Detect has been added to GPIO # %s", channel)
-
-        except:
-            self._logger.exception("Cannot setup GPIO ports %s, check to makes sure you don't have the same ports assigned to multiple actions", str(channel))
-
-    def RemoveEventDetects(self): #4
-        GPIO.remove_event_detect(self.home_pin)
-        GPIO.remove_event_detect(self.resume_pin)
-        GPIO.remove_event_detect(self.pause_pin)
-        GPIO.remove_event_detect(self.x_pin_pos)
-        GPIO.remove_event_detect(self.x_pin_neg)
-        GPIO.remove_event_detect(self.y_pin_pos)
-        GPIO.remove_event_detect(self.y_pin_neg)
-        GPIO.remove_event_detect(self.z_pin_pos)
-        GPIO.remove_event_detect(self.z_pin_neg)
-
-    #def cleanupGPIO(self, channel):
-        #try:
-        #    GPIO.remove_event_detect(channel)
-        #    self._logger.info("Old Event Detect removed from GPIO # %s", channel)
-
-        #except:
-        #    pass
-        #try:
-            #GPIO.cleanup()
-        #except:
-        #    pass
-
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = OctoBuddyPlugin()
