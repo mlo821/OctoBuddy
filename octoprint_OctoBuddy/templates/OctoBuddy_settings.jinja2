@@ -360,6 +360,15 @@
       <div class="help-block">{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your E-stop button is attached to.') }}</div>
     </div>
   </div>
+
+  <div class="control-group">
+    <label class="control-label">{{ _('Jog Increment:') }}</label>
+    <div class="controls" data-toggle="tooltip" title="{{ _('The incremenet in mm that the print head will move each time you perform an axis jog') }}">
+      <input type="number" step="any" min="0" class="input-mini text-right" data-bind="value: settings.plugins.OctoBuddy.debounce">
+        <span class="add-on">ms</span>
+        <div class="help-block">{{ _('The incremenet in mm that the print head will move each time you perform an axis jog') }}</div>
+      </div>
+  </div>
   
   <div class="control-group">
         <label class="control-label">{{ _('Debounce Time:') }}</label>

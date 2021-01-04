@@ -38,10 +38,28 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
                 self._printer.resume_print
 
             if channel == self.z_pin_pos:
-                d = {'z' :3}
+                d = {'z' :self.jog_increment}
                 self._printer.jog(d)
 
+            if channel == self.z_pin_neg:
+                d = {'z' :self.jog_increment}
+                self._printer.jog(d)
 
+            if channel == self.y_pin_pos:
+                d = {'y' :self.jog_increment}
+                self._printer.jog(d)
+
+            if channel == self.y_pin_neg:
+                d = {'y' :-self.jog_increment}
+                self._printer.jog(d)
+
+            if channel == self.x_pin_pos:
+                d = {'x' :self.jog_increment}
+                self._printer.jog(d)
+
+            if channel == self.x_pin_neg:
+                d = {'x' :-self.jog_increment}
+                self._printer.jog(d)
 
 
 
@@ -73,6 +91,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 		    pause_pin   = 15,
 			e_stop_pin = -1,
 			debounce    = 400,
+            jog_increment = 5,
 			#2
 		)
 
@@ -159,6 +178,10 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     @property
     def z_pin_neg(self):
         return int(self._settings.get(["z_pin_neg"]))
+
+    @property
+    def jog_increment(self):
+        return int(self._settings.get(["jog_increment"]))
 
     @property
     def e_stop_pin(self):
