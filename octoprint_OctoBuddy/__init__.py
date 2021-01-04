@@ -39,7 +39,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
             if channel == self.z_pin_pos:
                 d = {'z' :3}
-                self._printer.job(d)
+                self._printer.jog(d)
 
 
 
