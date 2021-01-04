@@ -39,11 +39,10 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
             if channel == self.z_pin_pos:
                 d = {'z' :self.jog_increment}
-                self._printer.commands("M117 Jogging Z axis by %s", self.jog_increment)
                 self._printer.jog(d)
 
             if channel == self.z_pin_neg:
-                d = {'z' :self.jog_increment}
+                d = {'z' :-self.jog_increment}
                 self._printer.jog(d)
 
             if channel == self.y_pin_pos:
