@@ -25,10 +25,21 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def button_callback(self, channel):
         self._logger.info("%s was pressed, its state is %s = ", channel, GPIO.gpio_function(channel))
 
-        if channel == self.home_pin:
-            self._printer.home("x")
-            self._printer.home("y")
-            self._printer.home("z")
+        if channel == self.pause_pin:
+            self._printer.resume_print
+
+        if self._printer.get_state_id() != "PRINTING" and self._printer.is_printing() == False:
+            if channel == self.home_pin:
+                self._printer.home("x")
+                self._printer.home("y")
+                self._printer.home("z")
+
+            if channel == self.resume_pin:
+                self._printer.resume_print
+
+
+
+
 
     def setup_GPIO(self):
         GPIO.setwarnings(False)
