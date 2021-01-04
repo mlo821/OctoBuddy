@@ -47,15 +47,15 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 		#1
     def get_settings_defaults(self): 
         return dict(
-		    home_pin	= 24,   
-		    x_pin_pos   = 16,
-		    x_pin_neg   = 13,
-		    y_pin_pos   = 11,
-		    y_pin_neg   = 12,
-		    z_pin_pos   = 15,
-		    z_pin_neg   = 22,
-		    resume_pin  = 23,
-		    pause_pin   = 21,
+		    home_pin	= 35,   
+		    x_pin_pos   = 23,
+		    x_pin_neg   = 29,
+		    y_pin_pos   = 19,
+		    y_pin_neg   = 21,
+		    z_pin_pos   = 31,
+		    z_pin_neg   = 33,
+		    resume_pin  = 37,
+		    pause_pin   = 15,
 			e_stop_pin = -1,
 			debounce    = 400,
 			#2
@@ -89,9 +89,6 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
     def RemoveEventDetects(self): #4
         GPIO.remove_event_detect(self.home_pin)
-        func = GPIO.gpio_function(self.home_pin)
-        self._logger.info("Home pin state is %s", func)
-
         GPIO.remove_event_detect(self.resume_pin)
         GPIO.remove_event_detect(self.pause_pin)
         GPIO.remove_event_detect(self.x_pin_pos)
