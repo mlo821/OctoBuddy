@@ -78,6 +78,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         self.SetupSingleGPIO(self.z_pin_pos)
         self.SetupSingleGPIO(self.z_pin_neg)
         self.SetupSingleGPIO(self.set_nozzle_temperature_pin)
+        self.SetupSingleGPIO(self.set_bed_temperature_pin)
+
 
 		#1
     def get_settings_defaults(self): 
@@ -89,10 +91,12 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 		    y_pin_neg   = 21,
 		    z_pin_pos   = 31,
 		    z_pin_neg   = 33,
-		    resume_pin  = 37,
+		    resume_pin  = -1,
 		    pause_pin   = -1,
             set_nozzle_temperature_pin = 15,
             nozzle_temp = 200,
+            set_bed_temperature_pin = 37,
+            bed_temp = 50,
 			debounce    = 400,
             jog_increment = 5,
 			#2
@@ -136,6 +140,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
             GPIO.remove_event_detect(self.z_pin_pos)
             GPIO.remove_event_detect(self.z_pin_neg)
             GPIO.remove_event_detect(set_nozzle_temperature_pin)
+            GPIO.remove_event_detect(set_bed_temperature_pin)
+
 
         except:
             self__logger.info("Issue with removing event detects.  Contact plugin owner")
@@ -195,6 +201,10 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     @property
     def set_nozzle_temperature_pin(self):
         return int(self._settings.get(["set_nozzle_temperature_pin"]))
+
+    @property
+    def set_bed_temperature_pin(self):
+        return int(self._settings.get(["set_bed_temperature_pin"]))
 
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = OctoBuddyPlugin()

@@ -76,6 +76,17 @@
   </div>
 
 <h2>{{ _('Print Head Actions') }}</h2>
+
+  
+  <div class="control-group">
+    <label class="control-label">{{ _('Jog Increment:') }}</label>
+    <div class="controls" data-toggle="tooltip" title="{{ _('The increment in mm that the print head will move each time you perform an axis jog') }}">
+      <input type="number" step="any" min="0" class="input-mini text-right" data-bind="value: settings.plugins.OctoBuddy.jog_increment">
+        <span class="add-on">mm</span>
+        <div class="help-block">{{ _('The increment in mm that the print head will move each time you perform an axis jog') }}</div>
+      </div>
+  </div>
+  
   
       <div class="control-group">
         <label class="control-label">{{ _('Home Pin:') }}</label>
@@ -333,7 +344,7 @@
   
   <div class="control-group">
     <label class="control-label">{{ _('Set Nozzle Temperature Pin:') }}</label>
-    <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your E-Stop button is attached to.') }}">
+    <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your set nozzle tempature button is attached to.  Set temperature will set nozzle temp to temp specified below.') }}">
       <select data-bind="value: settings.plugins.OctoBuddy.set_nozzle_temperature_pin">
         <option value="-1">Disabled</option>
         <option value="3">BOARD 3</option>
@@ -363,28 +374,66 @@
         <option value="38">BOARD 38</option>
         <option value="40">BOARD 40</option>
       </select>
-      <div class="help-block">{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your set tempature button is attached to.  Set temperature will set nozzle temp to temp specified below') }}</div>
+      <div class="help-block">{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your set nozzle tempature button is attached to.  Set temperature will set nozzle temp to temp specified below') }}</div>
     </div>
   </div>
 
     <div class="control-group">
     <label class="control-label">{{ _('Nozzle Temperature:') }}</label>
-    <div class="controls" data-toggle="tooltip" title="{{ _('The increment in mm that the print head will move each time you perform an axis jog') }}">
+    <div class="controls" data-toggle="tooltip" title="{{ _('The temperature to set the nozzle to when the set nozzle temperature button is pressed') }}">
       <input type="number" step="any" min="0" class="input-mini text-right" data-bind="value: settings.plugins.OctoBuddy.nozzle_temp">
-        <span class="add-on">mm</span>
-        <div class="help-block">{{ _('The temperature to set the nozzle to when the set temperature button is pressed') }}</div>
+        <span class="add-on">C</span>
+        <div class="help-block">{{ _('The temperature to set the nozzle to when the set nozzle temperature button is pressed') }}</div>
       </div>
   </div>
-  
-  <div class="control-group">
-    <label class="control-label">{{ _('Jog Increment:') }}</label>
-    <div class="controls" data-toggle="tooltip" title="{{ _('The increment in mm that the print head will move each time you perform an axis jog') }}">
-      <input type="number" step="any" min="0" class="input-mini text-right" data-bind="value: settings.plugins.OctoBuddy.jog_increment">
-        <span class="add-on">mm</span>
-        <div class="help-block">{{ _('The increment in mm that the print head will move each time you perform an axis jog') }}</div>
+
+    <div class="control-group">
+    <label class="control-label">{{ _('Set Bed Temperature Pin:') }}</label>
+    <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your set bed tempature button is attached to.  Set temperature will set bed temp to temp specified below.') }}">
+      <select data-bind="value: settings.plugins.OctoBuddy.set_bed_temperature_pin">
+        <option value="-1">Disabled</option>
+        <option value="3">BOARD 3</option>
+        <option value="5">BOARD 5</option>
+        <option value="7">BOARD 7</option>
+        <option value="8">BOARD 8</option>
+        <option value="10">BOARD 10</option>
+        <option value="12">BOARD 12</option>
+        <option value="11">BOARD 11</option>
+        <option value="13">BOARD 13</option>
+        <option value="15">BOARD 15</option>
+        <option value="16">BOARD 16</option>
+        <option value="18">BOARD 18</option>
+        <option value="19">BOARD 19</option>
+        <option value="21">BOARD 21</option>
+        <option value="22">BOARD 22</option>
+        <option value="23">BOARD 23</option>
+        <option value="24">BOARD 24</option>
+        <option value="26">BOARD 26</option>
+        <option value="29">BOARD 29</option>
+        <option value="31">BOARD 31</option>
+        <option value="32">BOARD 32</option>
+        <option value="33">BOARD 33</option>
+        <option value="35">BOARD 35</option>
+        <option value="36">BOARD 36</option>
+        <option value="37">BOARD 37</option>
+        <option value="38">BOARD 38</option>
+        <option value="40">BOARD 40</option>
+      </select>
+      <div class="help-block">{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your set bed tempature button is attached to.  Set temperature will set bed temp to temp specified below') }}</div>
+    </div>
+  </div>
+
+    <div class="control-group">
+    <label class="control-label">{{ _('Bed Temperature:') }}</label>
+    <div class="controls" data-toggle="tooltip" title="{{ _('The temperature to set the bed to when the set bed temperature button is pressed') }}">
+      <input type="number" step="any" min="0" class="input-mini text-right" data-bind="value: settings.plugins.OctoBuddy.bed_temp">
+        <span class="add-on">C</span>
+        <div class="help-block">{{ _('The temperature to set the bed to when the set bed temperature button is pressed') }}</div>
       </div>
   </div>
-  
+
+<h2>{{ _('General Options') }}</h2>
+ 
   <div class="control-group">
         <label class="control-label">{{ _('Debounce Time:') }}</label>
         <div class="controls" data-toggle="tooltip" title="{{ _('Debounce time for button presses.  This prevents a single button press from acting like multiple button presses due to signal bouncing.  System waits the specified amount of time before beginning to look for new presses') }}">
