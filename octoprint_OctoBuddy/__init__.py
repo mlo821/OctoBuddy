@@ -8,6 +8,9 @@ import RPi.GPIO as GPIO
 import os
 
 bouncetime_button = 400
+bed_is_hot = false
+nozzle_is_hot = false
+bed_is_hot = false
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 					  octoprint.plugin.ShutdownPlugin,
@@ -60,6 +63,24 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
             if channel == self.x_pin_neg:
                 d = {'x' :-self.jog_increment}
                 self._printer.jog(d)
+
+            if channel == self.set_nozzle_temperature_pin:
+                if nozzle_is_hot:
+                    self._printer.set_temperature("tool0", 0)
+                    nozzle_is_hot = false
+
+                else:
+                    self._printer.set_temperature("tool0", self.nozzle_temp)
+                    nozzle_is_hot = true
+
+            if channel == self.set_bed_temperature_pin:
+                if nozzle_is_hot:
+                    self._printer.set_temperature("bed", 0)
+                    bed_is_hot = false
+
+                else:
+                    self._printer.set_temperature("bed", self.bed_temp)
+                    bed_is_hot = true
 
 
 
@@ -130,21 +151,32 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
     def RemoveEventDetects(self): #4
         try:
-            GPIO.remove_event_detect(self.home_pin)
-            GPIO.remove_event_detect(self.resume_pin)
-            GPIO.remove_event_detect(self.pause_pin)
-            GPIO.remove_event_detect(self.x_pin_pos)
-            GPIO.remove_event_detect(self.x_pin_neg)
-            GPIO.remove_event_detect(self.y_pin_pos)
-            GPIO.remove_event_detect(self.y_pin_neg)
-            GPIO.remove_event_detect(self.z_pin_pos)
-            GPIO.remove_event_detect(self.z_pin_neg)
-            GPIO.remove_event_detect(set_nozzle_temperature_pin)
-            GPIO.remove_event_detect(set_bed_temperature_pin)
+            if self.home_pin != -1:
+                GPIO.remove_event_detect(self.home_pin)
+            if self.resume_pin != -1:
+                GPIO.remove_event_detect(self.resume_pin)
+            if self.pause_pin != -1:
+                GPIO.remove_event_detect(self.pause_pin)
+            if self.x_pin_pos != -1:
+                GPIO.remove_event_detect(self.x_pin_pos)
+            if self.x_pin_neg != -1:
+                GPIO.remove_event_detect(self.x_pin_neg)
+            if self.y_pin_pos != -1:
+                GPIO.remove_event_detect(self.y_pin_pos)
+            if self.y_pin_neg != -1:
+                GPIO.remove_event_detect(self.y_pin_neg)
+            if self.z_pin_pos != -1:
+                GPIO.remove_event_detect(self.z_pin_pos)
+            if self.z_pin_neg != -1:
+                GPIO.remove_event_detect(self.z_pin_neg)
+            if self.set_nozzle_temperature_pin != -1:
+                GPIO.remove_event_detect(set_nozzle_temperature_pin)
+            if self.set_bed_temperature_pin != -1:
+                GPIO.remove_event_detect(set_bed_temperature_pin)
 
 
         except:
-            self__logger.info("Issue with removing event detects.  Contact plugin owner")
+            self._logger.info("Issue with removing event detects.  Contact plugin owner")
 
     def on_shutdown(self):
         GPIO.cleanup()
@@ -205,6 +237,14 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     @property
     def set_bed_temperature_pin(self):
         return int(self._settings.get(["set_bed_temperature_pin"]))
+
+    @property
+    def nozzle_temp(self):
+        return int(self._settings.get(["nozzle_temp"]))
+
+    @property
+    def bed_temp(self):
+        return int(self._settings.get(["bed_temp"]))
 
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = OctoBuddyPlugin()
