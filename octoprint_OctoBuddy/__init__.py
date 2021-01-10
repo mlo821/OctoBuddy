@@ -20,6 +20,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         self._logger.info("OctoBuddy Alive Now!")
         self._logger.info(self._printer.get_state_id())
         self._logger.info(GPIO.RPI_INFO)
+        nozzle_is_hot = false
+        bed_is_hot = false
         self.setup_GPIO()
 
 
