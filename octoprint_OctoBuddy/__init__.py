@@ -64,7 +64,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
                 self._printer.jog(d)
 
             if channel == self.set_nozzle_temperature_pin:
-                if nozzle_is_hot:
+                if nozzle_is_hot == True:
                     self._printer.commands("M117 Nozzle Cooling")
                     self._printer.set_temperature("tool0", 0)
                     nozzle_is_hot = False
@@ -75,7 +75,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
                     nozzle_is_hot = True
 
             if channel == self.set_bed_temperature_pin:
-                if nozzle_is_hot:
+                if bed_is_hot == True:
                     self._printer.commands("M117 Bed Cooling")
                     self._printer.set_temperature("bed", 0)
                     bed_is_hot = False
