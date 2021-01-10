@@ -63,6 +63,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
 
 
+
     def setup_GPIO(self):
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
@@ -76,7 +77,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
         self.SetupSingleGPIO(self.y_pin_neg)
         self.SetupSingleGPIO(self.z_pin_pos)
         self.SetupSingleGPIO(self.z_pin_neg)
-        self.SetupSingleGPIO(self.e_stop_pin)
+        self.SetupSingleGPIO(self.set_nozzle_temperature_pin)
+
 		#1
     def get_settings_defaults(self): 
         return dict(
@@ -88,8 +90,9 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 		    z_pin_pos   = 31,
 		    z_pin_neg   = 33,
 		    resume_pin  = 37,
-		    pause_pin   = 15,
-			e_stop_pin = -1,
+		    pause_pin   = -1,
+            set_nozzle_temperature_pin = 15,
+            nozzle_temp = 200,
 			debounce    = 400,
             jog_increment = 5,
 			#2
@@ -132,6 +135,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
             GPIO.remove_event_detect(self.y_pin_neg)
             GPIO.remove_event_detect(self.z_pin_pos)
             GPIO.remove_event_detect(self.z_pin_neg)
+            GPIO.remove_event_detect(set_nozzle_temperature_pin)
+
         except:
             self__logger.info("Issue with removing event detects.  Contact plugin owner")
 
@@ -186,6 +191,10 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     @property
     def e_stop_pin(self):
         return int(self._settings.get(["e_stop_pin"])) #3
+
+    @property
+    def set_nozzle_temperature_pin(self):
+        return int(self._settings.get(["set_nozzle_temperature_pin"]))
 
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = OctoBuddyPlugin()
