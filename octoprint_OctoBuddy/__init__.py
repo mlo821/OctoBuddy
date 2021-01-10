@@ -8,9 +8,8 @@ import RPi.GPIO as GPIO
 import os
 
 bouncetime_button = 400
-bed_is_hot = false
-nozzle_is_hot = false
-bed_is_hot = false
+bed_is_hot = False
+nozzle_is_hot = False
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 					  octoprint.plugin.ShutdownPlugin,
@@ -67,20 +66,20 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
             if channel == self.set_nozzle_temperature_pin:
                 if nozzle_is_hot:
                     self._printer.set_temperature("tool0", 0)
-                    nozzle_is_hot = false
+                    nozzle_is_hot = False
 
                 else:
                     self._printer.set_temperature("tool0", self.nozzle_temp)
-                    nozzle_is_hot = true
+                    nozzle_is_hot = True
 
             if channel == self.set_bed_temperature_pin:
                 if nozzle_is_hot:
                     self._printer.set_temperature("bed", 0)
-                    bed_is_hot = false
+                    bed_is_hot = False
 
                 else:
                     self._printer.set_temperature("bed", self.bed_temp)
-                    bed_is_hot = true
+                    bed_is_hot = True
 
 
 
