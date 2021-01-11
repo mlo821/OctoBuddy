@@ -27,7 +27,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
     def button_callback(self, channel):
         self._logger.info("%s was pressed, its state is %s = ", channel, GPIO.gpio_function(channel))
-
+        global nozzle_is_hot
+        global bed_is_hot
         if channel == self.pause_pin:
             self._printer.pause_print
 
@@ -65,6 +66,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
                 self._printer.jog(d)
 
             if channel == self.set_nozzle_temperature_pin:
+
                 if nozzle_is_hot == True:
                     self._printer.commands("M117 Nozzle Cooling")
                     self._printer.set_temperature("tool0", 0)
