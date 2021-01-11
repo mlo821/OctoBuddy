@@ -8,14 +8,13 @@ import RPi.GPIO as GPIO
 import os
 
 bouncetime_button = 400
-
+bed_is_hot = False
+nozzle_is_hot = False
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 					  octoprint.plugin.ShutdownPlugin,
 					  octoprint.plugin.SettingsPlugin,
 					  octoprint.plugin.TemplatePlugin):
-    bed_is_hot = False
-    nozzle_is_hot = False
 
     def on_after_startup(self):
         self._logger.info("OctoBuddy Alive Now!")
