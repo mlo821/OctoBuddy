@@ -25,7 +25,6 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
 
     def button_callback(self, channel):
-        self._logger.info("%s was pressed, its state is %s = ", channel, GPIO.gpio_function(channel))
         global nozzle_is_hot
         global bed_is_hot
         if channel == self.pause_pin:
@@ -155,7 +154,6 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
                 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
                 GPIO.add_event_detect(channel, GPIO.RISING, callback=self.button_callback, bouncetime = self.debounce)
                 self._logger.info("New Event Detect has been added to GPIO # %s", channel)
-                self._logger.info("The new GPIO # %s state is %s ", channel, GPIO.gpio_function(channel))
 
 
         except:
