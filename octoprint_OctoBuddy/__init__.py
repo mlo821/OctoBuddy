@@ -17,7 +17,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 					  octoprint.plugin.TemplatePlugin):
 
     def on_after_startup(self):
-        self._logger.info("OctoBuddy Alive Now!")
+        self._logger.info("OctoBuddy %s Alive Now!", self._plugin_version)
         self._logger.info(self._printer.get_state_id())
         self._logger.info(GPIO.RPI_INFO)
         self.setup_GPIO()
