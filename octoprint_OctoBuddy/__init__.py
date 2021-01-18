@@ -258,19 +258,19 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
     def bed_temp(self):
         return int(self._settings.get(["bed_temp"]))
 
-    def get_update_information(self):
-        return dict(
-            OctoBuddy=dict(
-                displayName=self._plugin_name,
-                displayVersion=self._plugin_version,
-                type="github_release",
-                current=self._plugin_version,
-                user="mlo821",
-                repo="OctoBuddy",
+  #  def get_update_information(self):
+  #      return dict(
+  #          OctoBuddy=dict(
+  #              displayName=self._plugin_name,
+  #              displayVersion=self._plugin_version,
+  #              type="github_release",
+  #              current=self._plugin_version,
+  #              user="mlo821",
+  #              repo="OctoBuddy",
 
-                pip="https://github.com/mlo821/OctoBuddy/archive/{target_version}.zip"
-			)
-		)
+  #              pip="https://github.com/mlo821/OctoBuddy/archive/{target_version}.zip"
+		#	)
+		#)
 
 __plugin_pythoncompat__ = ">=2.7,<4"
 
@@ -279,7 +279,7 @@ def __plugin_load__():
     global __plugin_implementation__
     __plugin_implementation__ = OctoBuddyPlugin()
 
-    global __plugin_hooks__
-    __plugin_hooks__ = {
-        "octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information
-    }
+    #global __plugin_hooks__
+    #__plugin_hooks__ = {
+    #    "octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information
+    #}
