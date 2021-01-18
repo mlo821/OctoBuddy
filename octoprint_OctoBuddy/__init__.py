@@ -260,8 +260,8 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
     def get_update_information(self):
         return dict(
-            octobuddy=dict(
-                displayName="HoctoBuddy",
+            OctoBuddy=dict(
+                displayName=self._plugin_name,
                 displayVersion=self._plugin_version,
                 type="github_release",
                 current=self._plugin_version,
