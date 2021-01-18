@@ -22,6 +22,3 @@ or manually using this URL:
     https://github.com/mlo821/OctoBuddy/archive/master.zip
 
 
-## Configuration
-
-**TODO:** Describe your plugin's configuration options (if any).
