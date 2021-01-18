@@ -1,6 +1,6 @@
 # OctoBuddy
 
-OctoBuddy is 3D printable button panel with an accompanying OctoPrint plugin that lets perform common printer actions like moving your print head with the push of a single button.  It let’s you speed up maintenance, troubleshooting, and filament changes much quicker and easier by bypassing the need to access OctoPrint interface or cumbersome printer menus.  The concept is simple, connect a button to the Raspberry Pi GPIO interface and tell the plugin which what action you want the port to perform.  You can mount your buttons to one of the <a href="https://www.thingiverse.com/thing:4727285"> my button panels </a> or make your own.
+OctoBuddy is 3D printable button panel with an accompanying OctoPrint plugin that lets perform common printer actions like moving your print head with the push of a single button.  It let’s you speed up things like maintenance, troubleshooting, and filament changes much quicker and easier by bypassing the need to access OctoPrint interface or cumbersome printer menus.  The concept is simple, connect a button to the Raspberry Pi GPIO interface and tell the plugin which what action you want the port to perform.  You can mount your buttons to one of the <a href="https://www.thingiverse.com/thing:4727285"> my button panels </a> or make your own.
 
 OctoBuddy can currently perform the following actions:
 <ul>
