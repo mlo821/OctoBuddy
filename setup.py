@@ -15,7 +15,7 @@ plugin_name = "OctoBuddy"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
 plugin_version = "1.0.01"
-
+#testgitignore
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
 plugin_description = """A plugin for use with OctoBuddy 3D Printer Companion"""
