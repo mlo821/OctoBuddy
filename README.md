@@ -21,6 +21,6 @@ or manually using this URL:
 
     https://github.com/mlo821/OctoBuddy/archive/master.zip
 
-<span style="font-size=4em">
+<font-size=10>
 DISCLAIMER: This plugin was written and made available without any expectation of warranty or guaranteed functionality.  In the unlikely scenario of mechanical failure or printer damage for any reason you agree, by nature of installing the OctoBuddy plugin, to waive any expectation of liability to the author for said damages.
-</span>
+</font-size>
