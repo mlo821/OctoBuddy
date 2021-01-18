@@ -3,10 +3,12 @@
 OctoBuddy is 3D printable button panel with an accompanying OctoPrint plugin that lets perform common printer actions like moving your print head with the push of a single button.  It let’s you speed up maintenance, troubleshooting, and filament changes much quicker and easier by bypassing the need to access OctoPrint interface or cumbersome printer menus.  The concept is simple
 
 OctoBuddy can currently perform the following actions:
-•	Home Printer
-•	Jog any Axis by a configurable distance
-•	Toggle bed temperature between a configurable temperature and 0
-•	Toggle nozzle temperature between a configurable temperature and 0
+<ul>
+    <li>Home Printer</li>
+    <li>Jog any Axis by a configurable distance</li>
+    <li>Toggle bed temperature between a configurable temperature and 0</li>
+    <li>Toggle nozzle temperature between a configurable temperature and 0</li>
+</ul>
 
 For a full how-to on building your own OctoBuddy go here: https://www.factoryrestart.com/octobuddy
 
