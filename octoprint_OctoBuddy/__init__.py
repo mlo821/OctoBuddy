@@ -10,6 +10,38 @@ import os
 bouncetime_button = 400
 bed_is_hot = False
 nozzle_is_hot = False
+active_gpios = []
+
+
+pinStates = {
+    "3" : "Home",
+    "5" : "Disabled",
+    "7" : "Disabled",
+    "10" : "Disabled",
+    "11" : "Disabled",
+    "12" : "Disabled",
+    "13" : "Disabled",
+    "15" : "SetNozzleTemp",
+    "16" : "Disabled",
+    "18" : "Disabled",
+    "19" : "JogY+",
+    "21" : "JogX-",
+    "22" : "Disabled",
+    "23" : "JogX+",
+    "24" : "Disabled",
+    "26" : "Disabled",
+    "29" : "JogX-",
+    "31" : "JogZ+",
+    "32" : "Disabled",
+    "33" : "JogZ-",
+    "35" : "Home",
+    "36" : "Disabled",
+    "37" : "SetBedTemp",
+    "38" : "Disabled",
+    "40" : "Disabled",
+
+}
+
 
 class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 					  octoprint.plugin.ShutdownPlugin,
@@ -116,6 +148,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 		#1
     def get_settings_defaults(self): 
         return dict(
+			pinStates,
 		    home_pin	= 35,   
 		    x_pin_pos   = 23,
 		    x_pin_neg   = 29,
@@ -157,7 +190,7 @@ class OctoBuddyPlugin(octoprint.plugin.StartupPlugin,
 
 
         except:
-            self._logger.exception("Cannot setup GPIO ports %s, check to makes sure you don't have the same ports assigned to multiple actions", str(channel))
+            self._logger.exception("Cannot setup GPIO port %s, check to makes sure you don't have the same ports assigned to multiple actions", str(channel))
 
     def RemoveEventDetects(self): #4
         try:
