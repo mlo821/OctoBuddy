@@ -86,25 +86,6 @@
         <div class="help-block">{{ _('The increment in mm that the print head will move each time you perform an axis jog') }}</div>
       </div>
   </div>
-
-      <div class="control-group">
-        <label class="control-label">{{ _('Pin 3:') }}</label>
-        <div class="controls" data-toggle="tooltip" title="{{ _('What action would you like to take when a button connected to pin 3 is pressed.') }}">
-			<select data-bind="value: settings.plugins.Octobuddy.pinstates[0]">
-				<option value="-1">None / Disabled</option>
-				<option value="Home">Home Printer</option>
-				<option value="JogX+">Jog X Axis +</option>
-				<option value="JogX-">Jog X Axis -</option>
-				<option value="JogY+">Jog Y Axis +</option>
-				<option value="JogY-">Jog Y Axis -</option>
-				<option value="JogZ+">Jog Z Axis +</option>
-				<option value="JogZ-">Jog Z Axis -</option>
-				<option value="SetNozzleTemp">Toggle Nozzle Temperature</option>
-				<option value="SetBedTemp">Toggle Bed Temperature</option>
-			</select>
-			<div class="help-block">{{ _('What action would you like to take when a button connected to pin 3 is pressed.') }}</div>
-        </div>
-    </div>
   
   
       <div class="control-group">
@@ -139,7 +120,7 @@
         <option value="38">BOARD 38</option>
         <option value="40">BOARD 40</option>
 			</select>
-			<div class="help-block">{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) is your home button is attached to.') }}</div>
+			<div class="help-block">{{ _('Which Raspberry Pi GPIO pin (BOARD Mode) your home button is attached to.') }}</div>
         </div>
     </div>
   
